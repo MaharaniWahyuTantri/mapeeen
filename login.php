@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login Admin - FMJ Farma</title>
+    <title>Login KM Farma</title>
     <link rel="icon" type="image/png" href="assets/img/favicon.ico">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
@@ -112,7 +112,7 @@ if (isset($_POST['login'])) {
             <div class="brand">
                 <h1>FMJ Farma</h1>
             </div>
-            <h3 class="text-center">Login Admin</h3>
+            <h3 class="text-center">Login User</h3>
             <?php if (isset($error)) : ?>
                 <p style="color: red; font-style: italic;">Username / Password Salah!</p>
             <?php endif; ?>
