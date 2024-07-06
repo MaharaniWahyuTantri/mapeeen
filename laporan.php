@@ -39,14 +39,10 @@
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 </head>
 <body>
-
+    
 <div class="wrapper">
-    <div class="sidebar" data-color="orange" data-image="assets/img/sidebar-5.jpg">
-
-    <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
-
-
-    	<div class="sidebar-wrapper">
+    <div class="sidebar" data-color="red">
+        <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="#" class="simple-text">
                     <?php 
@@ -62,64 +58,68 @@
             </div>
 
             <ul class="nav">
-            <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin' || $_SESSION['level'] == 'pegawai') { ?>
+                <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin' || $_SESSION['level'] == 'pegawai') { ?>
+                    <li>
+                        <a href="dashboard.php">
+                            <i class="pe-7s-graph"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'admin') { ?>
+                    <li>
+                        <a href="users.php">
+                            <i class="pe-7s-user"></i>
+                            <p>Users</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin' || $_SESSION['level'] == 'pegawai') { ?>
+                    <li>
+                        <a href="obat.php">
+                            <i class="pe-7s-note2"></i>
+                            <p>Data Obat</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'pegawai' || $_SESSION['level'] == 'admin') { ?>
+                    <li>
+                        <a href="penjualan.php">
+                            <i class="pe-7s-note2"></i>
+                            <p>Data Penjualan</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'pegawai') { ?>
+                    <li class="active">
+                        <a href="laporan.php">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>Laporan</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin') { ?>
+                    <li>
+                        <a href="request_obat.php">
+                            <i class="pe-7s-note2"></i>
+                            <p>Request Obat</p>
+                        </a>
+                    </li>
+                <?php } ?>
                 <li>
-                    <a href="dashboard.php">
-                        <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
+                    <a href="forum.php">
+                        <i class="pe-7s-chat"></i>
+                        <p>Forum</p>
                     </a>
                 </li>
-            <?php } ?>
-            <?php if($_SESSION['level'] == 'admin') { ?>
                 <li>
-                    <a href="users.php">
-                        <i class="pe-7s-user"></i>
-                        <p>Users</p>
-                    </a>
-                </li>
-            <?php } ?>
-            <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin' || $_SESSION['level'] == 'pegawai') { ?>
-                <li>
-                    <a href="obat.php">
-                        <i class="pe-7s-note2"></i>
-                        <p>Data Obat</p>
-                    </a>
-                </li>
-            <?php } ?>
-            <?php if($_SESSION['level'] == 'pegawai' || $_SESSION['level'] == 'admin') { ?>
-                <li>
-                    <a href="penjualan.php">
-                        <i class="pe-7s-note2"></i>
-                        <p>Data Penjualan</p>
-                    </a>
-                </li>
-            <?php } ?>
-            <?php if($_SESSION['level'] == 'pegawai') { ?>
-                <li class="active">
-                    <a href="laporan.php">
+                    <a href="articles.php">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Laporan</p>
+                        <p>Articles</p>
                     </a>
                 </li>
-            <?php } ?>
-            <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin') { ?>
-                <li>
-                    <a href="request_obat.php">
-                        <i class="pe-7s-note2"></i>
-                        <p>Request Obat</p> <?php /// buat button print ?>
-                    </a>
-                </li>
-            <?php } ?>
-            <?php //if($_SESSION['level'] == 'apoteker') { ?>
-                <!-- <li>
-                    <a href="penjualan_obat_narkotika.php">
-                        <i class="pe-7s-note2"></i>
-                        <p>Penjualan Obat Narkotika</p> 
-                    </a>
-                </li> -->
-            <?php //} ?>
             </ul>
-    	</div>
+        </div>
     </div>
 
     <div class="main-panel">
