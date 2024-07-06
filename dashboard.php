@@ -48,7 +48,7 @@ $jumlah = mysqli_fetch_assoc($res);
 <body>
 
     <div class="wrapper">
-        <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
+        <div class="sidebar" data-color="red">
 
             <div class="sidebar-wrapper">
                 <div class="logo">
@@ -168,9 +168,9 @@ $jumlah = mysqli_fetch_assoc($res);
 
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="card" style="background-color: #B8E1F1;">
+                            <div class="card" style="background-color: #8C0D1C;">
                                 <div class="header">
-                                    <h6>Stok Obat</h6>
+                                    <h6 style="color:#fff;">Stok Obat</h6>
                                     <h1 style="color: #fff;padding: 10px;">
                                         <?php $sql = "SELECT SUM(stok) AS stok FROM `obat`";
                                         $res = mysqli_query($conn, $sql);
@@ -182,9 +182,9 @@ $jumlah = mysqli_fetch_assoc($res);
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card" style="background-color:#8AA2D4;">
+                            <div class="card" style="background-color:#D81522;">
                                 <div class="header">
-                                    <h6>Obat Terjual</h6>
+                                    <h6 style="color: #fff;">Obat Terjual</h6>
                                     <h1 style="color: #fff;padding: 10px;">
                                         <?php $sql = "SELECT SUM(jumlah_obat) AS jumlah FROM `penjualan`";
                                         $res = mysqli_query($conn, $sql);
@@ -197,9 +197,9 @@ $jumlah = mysqli_fetch_assoc($res);
                         </div>
 
                         <div class="col-md-3">
-                            <div class="card" style="background-color: #B8E1F1;">
+                            <div class="card" style="background-color: #8C0D1C;">
                                 <div class="header">
-                                    <h6>Obat Expired</h6>
+                                    <h6 style="color: #fff;">Obat Expired</h6>
                                     <h1 style="color: #fff;padding: 10px;">
                                         <?php
                                         $tgl = date("Y-m-d");
@@ -214,9 +214,9 @@ $jumlah = mysqli_fetch_assoc($res);
                         </div>
                         <?php if ($_SESSION['level'] == 'admin' || $_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'pegawai') { ?>
                             <div class="col-md-3">
-                                <div class="card" style="background-color: #8AA2D4;">
+                                <div class="card" style="background-color: #D81522;">
                                     <div class="header">
-                                        <h6>Users <h1 style="color: #fff;padding: 10px;"><?= $jumlah['jumlah'] ?></h1>
+                                        <h6 style="color: #fff;">Users <h1 style="color: #fff;padding: 10px;"><?= $jumlah['jumlah'] ?></h1>
                                         </h6>
                                     </div>
                                 </div>

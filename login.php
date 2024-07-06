@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
         .login-form h3 {
             margin-bottom: 20px;
             font-weight: bold;
-            color: #222366;
+            color: #8C0D1C;
         }
         .form-control {
             margin-bottom: 20px;
@@ -73,7 +73,7 @@ if (isset($_POST['login'])) {
             border: 1px solid #ddd;
         }
         .btn-primary {
-            background-color: #222366;
+            background-color: #8C0D1C;
             border: none;
             width: 100%;
             padding: 10px;
@@ -101,16 +101,16 @@ if (isset($_POST['login'])) {
         .brand h1 {
             font-size: 2.5em;
             font-weight: bold;
-            color: #222366;
+            color: #8C0D1C;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="assets/img/login.png" alt="Login Image" class="login-image">
+        <img src="https://i.pinimg.com/564x/e6/19/bb/e619bba5e3add88ea94265db879ee011.jpg" alt="Login Image" class="login-image">
         <div class="login-form">
             <div class="brand">
-                <h1>FMJ Farma</h1>
+                <h1>KM Farma</h1>
             </div>
             <h3 class="text-center">Login User</h3>
             <?php if (isset($error)) : ?>

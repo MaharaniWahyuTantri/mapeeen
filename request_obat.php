@@ -60,7 +60,7 @@
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="red">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
@@ -129,6 +129,18 @@
                     </a>
                 </li>
             <?php } ?>
+                    <li>
+                        <a href="forum.php">
+                            <i class="pe-7s-chat"></i>
+                            <p>Forum</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="articles.php">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>Articles</p>
+                        </a>
+                    </li>
             <?php //if($_SESSION['level'] == 'apoteker') { ?>
                <!--  <li>
                     <a href="penjualan_obat_narkotika.php">
