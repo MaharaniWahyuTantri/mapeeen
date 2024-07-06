@@ -33,7 +33,7 @@ $result = mysqli_query($conn, $sql);
     <link href="assets/css/demo.css" rel="stylesheet" />
 
     <!-- Fonts and icons -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
@@ -65,12 +65,54 @@ $result = mysqli_query($conn, $sql);
         .panel-body.open {
             display: block;
         }
+
+        .share-buttons {
+            margin-top: 10px;
+        }
+
+        .share-buttons a {
+            margin-right: 20px;
+            text-decoration: none;
+        }
+
+        .share-buttons a i {
+            font-size: 20px; 
+            color: red;
+        }
+
+        .share-buttons a i:hover {
+            color: #0056b3;
+        }
+            
+        .btn-primary {
+            background-color: red;
+            border-color: red;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: darkred;
+            border-color: darkred;
+        }
+        .panel-title {
+            color: maroon;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: red;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+</style>
+
     </style>
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="blue">
+        <div class="sidebar" data-color="red">
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
@@ -127,6 +169,13 @@ $result = mysqli_query($conn, $sql);
                                         <p><?= nl2br(htmlspecialchars($row['content'])) ?></p>
                                         <p>Author: <?= htmlspecialchars($row['author']) ?></p>
                                         <p>Date: <?= htmlspecialchars($row['created_at']) ?></p>
+                                        <div class="share-buttons">
+                                            <a href="https://www.instagram.com/sharer/sharer.php?u=<?= urlencode('http://yourwebsite.com/article.php?id=' . $row['id']) ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+                                            <a href="https://api.whatsapp.com/send?text=<?= urlencode('http://yourwebsite.com/article.php?id=' . $row['id']) ?>" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                            <a href="https://twitter.com/share?url=<?= urlencode('http://yourwebsite.com/article.php?id=' . $row['id']) ?>" target="_blank"><i class="fab fa-twitter"></i></a>
+                                            <a href="https://t.me/share/url?url=<?= urlencode('http://yourwebsite.com/article.php?id=' . $row['id']) ?>" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                                            <a href="#" onclick="copyToClipboard('http://yourwebsite.com/article.php?id=<?= $row['id'] ?>')"><i class="fa fa-link"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             <?php endwhile; ?>
@@ -148,7 +197,7 @@ $result = mysqli_query($conn, $sql);
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
 
-    <!-- Custom JavaScript for article accordion -->
+    <!-- Custom JavaScript for article accordion and copy link -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const panels = document.querySelectorAll(".panel");
@@ -163,6 +212,14 @@ $result = mysqli_query($conn, $sql);
                 });
             });
         });
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Link copied to clipboard!');
+            }, function(err) {
+                alert('Failed to copy link');
+            });
+        }
     </script>
 </body>
 
