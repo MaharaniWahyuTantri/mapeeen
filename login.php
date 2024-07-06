@@ -107,7 +107,7 @@ if (isset($_POST['login'])) {
 </head>
 <body>
     <div class="container">
-        <img src="https://i.pinimg.com/564x/e6/19/bb/e619bba5e3add88ea94265db879ee011.jpg" alt="Login Image" class="login-image">
+        <img src="https://i.pinimg.com/564x/06/8e/5d/068e5d0583d71655f66f3f85c7dedea2.jpg" alt="Login Image" class="login-image">
         <div class="login-form">
             <div class="brand">
                 <h1>KM Farma</h1>
