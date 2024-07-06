@@ -58,12 +58,6 @@ $jumlah = mysqli_fetch_assoc($res);
     ?>
     <link id="theme-css" href="<?= $themeCSS ?>" rel="stylesheet" />
 
-    <style> 
-    .dropdown-menu{
-        margin-left: 130px;
-    }
-    </style>
-
 </head>
 
 <body>
@@ -180,7 +174,7 @@ $jumlah = mysqli_fetch_assoc($res);
                             </li>
                             <li class="separator hidden-lg"></li>
                         </ul>
-                        
+                        </div>
                         <!-- Contoh dropdown untuk memilih tema -->
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="themeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -192,7 +186,6 @@ $jumlah = mysqli_fetch_assoc($res);
                                 <li><a href="#" onclick="changeThemeColor('red')">Red</a></li>
                                 <li><a href="#" onclick="changeThemeColor('green')">Green</a></li>
                             </ul>
-                        </div>
                     </div>
                 </div>
             </nav>

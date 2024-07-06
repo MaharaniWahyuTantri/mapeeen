@@ -178,7 +178,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'reply_message') {
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="#">
+                                <a href="logout.php">
                                     <p>Log out</p>
                                 </a>
                             </li>
