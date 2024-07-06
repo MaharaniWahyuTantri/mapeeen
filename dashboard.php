@@ -120,6 +120,12 @@ $jumlah = mysqli_fetch_assoc($res);
                             <p>Forum</p>
                         </a>
                     </li>
+                    <li>
+                        <a href="articles.php">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>Articles</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
