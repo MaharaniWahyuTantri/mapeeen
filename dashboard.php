@@ -27,7 +27,7 @@ $jumlah = mysqli_fetch_assoc($res);
     <meta name="viewport" content="width=device-width" />
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="theme-css" href="assets/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Animation library for notifications -->
     <link href="assets/css/animate.min.css" rel="stylesheet" />
@@ -42,6 +42,27 @@ $jumlah = mysqli_fetch_assoc($res);
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+    <?php
+    // Cek preferensi skema warna dari session atau database
+    $themeColor = isset($_SESSION['theme_color']) ? $_SESSION['theme_color'] : 'blue'; // Default theme color
+
+    // Sesuaikan link CSS berdasarkan pilihan tema warna
+    $themeCSS = "assets/css/bootstrap.min.css"; // Default CSS
+
+    if ($themeColor == 'red') {
+        $themeCSS = "assets/css/red-bootstrap.min.css";
+    } elseif ($themeColor == 'green') {
+        $themeCSS = "assets/css/green-bootstrap.min.css";
+    }
+    ?>
+    <link id="theme-css" href="<?= $themeCSS ?>" rel="stylesheet" />
+
+    <style> 
+    .dropdown-menu{
+        margin-left: 130px;
+    }
+    </style>
 
 </head>
 
@@ -159,6 +180,19 @@ $jumlah = mysqli_fetch_assoc($res);
                             </li>
                             <li class="separator hidden-lg"></li>
                         </ul>
+                        
+                        <!-- Contoh dropdown untuk memilih tema -->
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="themeDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Theme Color
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="themeDropdown">
+                                <li><a href="#" onclick="changeThemeColor('blue')">Blue</a></li>
+                                <li><a href="#" onclick="changeThemeColor('red')">Red</a></li>
+                                <li><a href="#" onclick="changeThemeColor('green')">Green</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -216,8 +250,8 @@ $jumlah = mysqli_fetch_assoc($res);
                             <div class="col-md-3">
                                 <div class="card" style="background-color: #D81522;">
                                     <div class="header">
-                                        <h6 style="color: #fff;">Users <h1 style="color: #fff;padding: 10px;"><?= $jumlah['jumlah'] ?></h1>
-                                        </h6>
+                                        <h6 style="color: #fff;">Users</h6>
+                                        <h1 style="color: #fff;padding: 10px;"><?= $jumlah['jumlah'] ?></h1>
                                     </div>
                                 </div>
                             </div>
@@ -249,45 +283,30 @@ $jumlah = mysqli_fetch_assoc($res);
 <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-<!-- Charts Plugin -->
-<script src="assets/js/chartist.min.js"></script>
-
-<!-- Notifications Plugin -->
-<script src="assets/js/bootstrap-notify.js"></script>
-
-<!-- Google Maps Plugin -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
 <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <script src="assets/js/demo.js"></script>
 
-<?php if ($_SESSION['level'] == 'apoteker') { ?>
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            demo.initChartist();
-
-            $.notify({
-                icon: 'pe-7s-stroke',
-                message: "<?php
-
-                            $periksa = mysqli_query($conn, "select * from obat where stok <=5");
-                            while ($q = mysqli_fetch_array($periksa)) {
-                                if ($q['stok'] <= 5) {
-                                    echo "Stok <b style='color:white;'>" . $q['nama'] . "</b> yang tersisa sudah kurang dari 5 . silahkan request lagi !!<br><br>";
-                                }
-                            }
-                            ?>"
-            }, {
-                type: 'danger',
-                timer: 4000
-            });
-
+<script>
+    // Contoh fungsi untuk mengubah tema warna
+    function changeThemeColor(color) {
+        // Simpan preferensi ke session atau database di sini
+        $.ajax({
+            url: 'save_theme_preference.php',
+            type: 'POST',
+            data: { theme_color: color },
+            success: function(response) {
+                // Berhasil disimpan, lakukan pengaturan tema
+                var themeCSS = 'assets/css/' + color + '-bootstrap.min.css';
+                $('#theme-css').attr('href', themeCSS);
+            },
+            error: function(xhr, status, error) {
+                console.error('Failed to save theme preference: ' + error);
+            }
         });
-    </script>
-<?php } ?>
+    }
+</script>
 
 </html>
