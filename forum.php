@@ -80,32 +80,88 @@ if (isset($_POST['action']) && $_POST['action'] == 'reply_message') {
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="sidebar" data-color="red">
-            <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="#" class="simple-text">
-                        Discussion Forum
-                    </a>
-                </div>
+    
+<div class="wrapper">
+    <div class="sidebar" data-color="red">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    <?php 
+                        if ($_SESSION['level'] == 'admin') {
+                            echo "admin apotek";
+                        } else if ($_SESSION['level'] == 'apoteker') {
+                            echo "apoteker apotek";
+                        } else if ($_SESSION['level'] == 'pegawai') {
+                            echo "pegawai apotek";
+                        }
+                     ?>
+                </a>
+            </div>
 
-                <ul class="nav">
+            <ul class="nav">
+                <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin' || $_SESSION['level'] == 'pegawai') { ?>
                     <li>
                         <a href="dashboard.php">
                             <i class="pe-7s-graph"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="forum.php">
-                            <i class="pe-7s-chat"></i>
-                            <p>Forum</p>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'admin') { ?>
+                    <li>
+                        <a href="users.php">
+                            <i class="pe-7s-user"></i>
+                            <p>Users</p>
                         </a>
                     </li>
-                    <!-- Add more menu items here as needed -->
-                </ul>
-            </div>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin' || $_SESSION['level'] == 'pegawai') { ?>
+                    <li>
+                        <a href="obat.php">
+                            <i class="pe-7s-note2"></i>
+                            <p>Data Obat</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'pegawai' || $_SESSION['level'] == 'admin') { ?>
+                    <li>
+                        <a href="penjualan.php">
+                            <i class="pe-7s-note2"></i>
+                            <p>Data Penjualan</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'pegawai') { ?>
+                    <li>
+                        <a href="laporan.php">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>Laporan</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin') { ?>
+                    <li>
+                        <a href="request_obat.php">
+                            <i class="pe-7s-note2"></i>
+                            <p>Request Obat</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <li  class="active">
+                    <a href="forum.php">
+                        <i class="pe-7s-chat"></i>
+                        <p>Forum</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="articles.php">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Articles</p>
+                    </a>
+                </li>
+            </ul>
         </div>
+    </div>
 
         <div class="main-panel">
             <nav class="navbar navbar-default navbar-fixed">

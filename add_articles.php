@@ -78,45 +78,113 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="sidebar" data-color="red" data-image="assets/img/sidebar-5.jpg">
-            <div class="sidebar-wrapper">
-                <div class="logo">
-                    <a href="#" class="simple-text">
-                        KNOWLEDGE ARTICLES
-                    </a>
-                </div>
+    
+<div class="wrapper">
+    <div class="sidebar" data-color="red">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    <?php 
+                        if ($_SESSION['level'] == 'admin') {
+                            echo "admin apotek";
+                        } else if ($_SESSION['level'] == 'apoteker') {
+                            echo "apoteker apotek";
+                        } else if ($_SESSION['level'] == 'pegawai') {
+                            echo "pegawai apotek";
+                        }
+                     ?>
+                </a>
+            </div>
 
-                <ul class="nav">
+            <ul class="nav">
+                <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin' || $_SESSION['level'] == 'pegawai') { ?>
                     <li>
                         <a href="dashboard.php">
                             <i class="pe-7s-graph"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'admin') { ?>
                     <li>
-                        <a href="forum.php">
-                            <i class="pe-7s-chat"></i>
-                            <p>Forum</p>
+                        <a href="users.php">
+                            <i class="pe-7s-user"></i>
+                            <p>Users</p>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="articles.php">
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin' || $_SESSION['level'] == 'pegawai') { ?>
+                    <li>
+                        <a href="obat.php">
+                            <i class="pe-7s-note2"></i>
+                            <p>Data Obat</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'pegawai' || $_SESSION['level'] == 'admin') { ?>
+                    <li>
+                        <a href="penjualan.php">
+                            <i class="pe-7s-note2"></i>
+                            <p>Data Penjualan</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'pegawai') { ?>
+                    <li>
+                        <a href="laporan.php">
                             <i class="pe-7s-news-paper"></i>
-                            <p>Artikel</p>
+                            <p>Laporan</p>
                         </a>
                     </li>
-                </ul>
-            </div>
+                <?php } ?>
+                <?php if($_SESSION['level'] == 'apoteker' || $_SESSION['level'] == 'admin') { ?>
+                    <li>
+                        <a href="request_obat.php">
+                            <i class="pe-7s-note2"></i>
+                            <p>Request Obat</p>
+                        </a>
+                    </li>
+                <?php } ?>
+                <li>
+                    <a href="forum.php">
+                        <i class="pe-7s-chat"></i>
+                        <p>Forum</p>
+                    </a>
+                </li>
+                <li  class="active">
+                    <a href="articles.php">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Articles</p>
+                    </a>
+                </li>
+            </ul>
         </div>
+    </div>
 
-        <div class="main-panel">
-            <!-- Navbar content -->
-            <nav class="navbar navbar-default navbar-fixed">
-                <div class="container-fluid">
-                    <!-- Navbar header -->
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Article</a>
                 </div>
-            </nav>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">              
+                        <li>
+                            <a href="logout.php">
+                                <p>Log out</p>
+                            </a>
+                        </li>
+                        <li class="separator hidden-lg hidden-md"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
             <!-- Content -->
             <div class="content">
