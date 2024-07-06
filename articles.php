@@ -74,7 +74,7 @@ $result = mysqli_query($conn, $sql);
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                        Discussion Forum
+                        KNOWLEDGE ARTICLES
                     </a>
                 </div>
 
