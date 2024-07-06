@@ -144,6 +144,10 @@ if (isset($_POST['action']) && $_POST['action'] == 'reply_message') {
                                 <div class="content">
                                     <form method="POST" action="functions/func_forum.php?action=add_message">
                                         <div class="form-group">
+                                            <label for="username">Your Username</label>
+                                            <input type="text" class="form-control" name="username" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="message">Message</label>
                                             <textarea class="form-control" name="message" rows="3" required></textarea>
                                         </div>

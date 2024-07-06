@@ -73,7 +73,25 @@ function add_forum_reply($message_id, $username, $reply_message) {
 // Handle actions
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'add_message') {
-        // Handle adding new message (similar to previous implementation)
+        if (isset($_POST['username']) && isset($_POST['message'])) {
+            $username = $_POST['username'];
+            $message = $_POST['message'];
+            
+            // Call function to add message
+            $result = add_forum_message($username, $message);
+            
+            // Redirect back to forum.php after adding message
+            if ($result['success']) {
+                header('Location: ../forum.php');
+                exit;
+            } else {
+                echo 'Failed to add message. Please try again.';
+                exit;
+            }
+        } else {
+            echo 'Username and message are required.';
+            exit;
+        }
     } elseif ($_GET['action'] == 'reply_message') {
         if (isset($_POST['message_id']) && isset($_POST['username']) && isset($_POST['reply_message'])) {
             $message_id = $_POST['message_id'];

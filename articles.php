@@ -70,7 +70,7 @@ $result = mysqli_query($conn, $sql);
 
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="blue">
+        <div class="sidebar" data-color="red">
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
