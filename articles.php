@@ -170,7 +170,9 @@ $result = mysqli_query($conn, $sql);
                                         <p>Author: <?= htmlspecialchars($row['author']) ?></p>
                                         <p>Date: <?= htmlspecialchars($row['created_at']) ?></p>
                                         <div class="share-buttons">
-                                            <a href="https://www.instagram.com/sharer/sharer.php?u=<?= urlencode('http://yourwebsite.com/article.php?id=' . $row['id']) ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+                                            <a href="https://www.instagram.com/" target="_blank" onclick="shareOnInstagram('http://yourwebsite.com/article.php?id=<?= $row['id'] ?>')">
+                                                <i class="fab fa-instagram"></i>
+                                            </a>
                                             <a href="https://api.whatsapp.com/send?text=<?= urlencode('http://yourwebsite.com/article.php?id=' . $row['id']) ?>" target="_blank"><i class="fab fa-whatsapp"></i></a>
                                             <a href="https://twitter.com/share?url=<?= urlencode('http://yourwebsite.com/article.php?id=' . $row['id']) ?>" target="_blank"><i class="fab fa-twitter"></i></a>
                                             <a href="https://t.me/share/url?url=<?= urlencode('http://yourwebsite.com/article.php?id=' . $row['id']) ?>" target="_blank"><i class="fab fa-telegram-plane"></i></a>
