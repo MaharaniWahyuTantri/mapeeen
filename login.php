@@ -83,12 +83,12 @@ if (isset($_POST['login'])) {
             transition: background-color 0.3s;
         }
         .btn-primary:hover {
-            background-color: #1a1a56;
+            background-color: #d81522;
         }
         .form-group a {
             display: block;
             text-align: right;
-            color: #222366;
+            color: #8C0D1C;
             text-decoration: none;
         }
         .form-group a:hover {

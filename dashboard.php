@@ -277,12 +277,12 @@ $jumlah = mysqli_fetch_assoc($res);
                             $periksa = mysqli_query($conn, "select * from obat where stok <=5");
                             while ($q = mysqli_fetch_array($periksa)) {
                                 if ($q['stok'] <= 5) {
-                                    echo "Stok <b style='color:red;'>" . $q['nama'] . "</b> yang tersisa sudah kurang dari 5 . silahkan request lagi !!<br><br>";
+                                    echo "Stok <b style='color:white;'>" . $q['nama'] . "</b> yang tersisa sudah kurang dari 5 . silahkan request lagi !!<br><br>";
                                 }
                             }
                             ?>"
             }, {
-                type: 'info',
+                type: 'danger',
                 timer: 4000
             });
 
